@@ -1,0 +1,35 @@
+{
+  "name": "GitArtistBackend",
+  "version": "1.0.0",
+  "description": "Backend code for GitArtist project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node out/initRepo.js",
+    "build": "tsc",
+    "dev": "nodemon src/initRepo.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arajguha/GitArtistBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arajguha/GitArtistBackend/issues"
+  },
+  "homepage": "https://github.com/arajguha/GitArtistBackend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "simple-git": "^2.14.0",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.24",
+    "@types/typescript": "^2.0.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2"
+  }
+}
