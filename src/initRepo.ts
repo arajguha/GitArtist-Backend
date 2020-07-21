@@ -10,7 +10,7 @@ const path = 'C:\\Users\\Debanik\\Desktop\\gitDownload\\test'
 
 if(!fs.existsSync(path)){
     console.log('directory does not exist')
-    console.log('exiting process')
+    console.log('exiting server process')
     process.exit()
 }
 
