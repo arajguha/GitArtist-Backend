@@ -1,0 +1,1 @@
+export const BASE_DIR = 'C:\\Users\\Debanik\\Desktop\\gitDownload\\gitArtist-projects'

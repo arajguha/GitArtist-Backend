@@ -4,9 +4,9 @@
   "description": "Backend code for GitArtist project",
   "main": "index.js",
   "scripts": {
-    "start": "node out/initRepo.js",
-    "build": "tsc",
-    "dev": "nodemon src/initRepo.ts",
+    "start": "node out/app.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/arajguha/GitArtistBackend#readme",
   "dependencies": {
+    "@types/cors": "^2.8.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "simple-git": "^2.14.0",
     "typescript": "^3.9.7"
