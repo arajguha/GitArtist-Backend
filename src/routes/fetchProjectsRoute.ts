@@ -1,6 +1,5 @@
 import express, { Router, Request, Response } from 'express'
 import { BASE_DIR } from './baseDir'
-import fs from 'fs'
 import fetchProjects from '../services/fetchProjects'
 
 const router: Router = express.Router()
