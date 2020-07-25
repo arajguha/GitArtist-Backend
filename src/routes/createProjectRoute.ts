@@ -1,8 +1,10 @@
 import express, { Request, Response, Router} from 'express'
-import { BASE_DIR } from '../services/baseDir'
+import env from '../config-loader';
 import ProjectService  from '../services/ProjectService'
 import IProjectService  from '../services/types/IProjectService'
 import path from 'path'
+
+const { BASE_DIR = '' } = env
 
 interface CodedRuntimeException {
     httpStatus: number,

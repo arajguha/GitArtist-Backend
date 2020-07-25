@@ -1,4 +1,3 @@
-import { BASE_DIR } from './baseDir'
 import ProjectCard from './types/IProjectCard'
 import { projectCard } from './projectCard'
 import fileSystem from 'fs'
@@ -25,11 +24,11 @@ class ProjectService {
         })
     }
 
-    fetchProjects(): ProjectCard[] {
-        const projects = fileSystem.readdirSync(BASE_DIR)
+    fetchProjects(path: string): ProjectCard[] {
+        const projects = fileSystem.readdirSync(path)
     
         const projectCards: ProjectCard[] = projects.map((project: string) => {
-            const files: string[] = fileSystem.readdirSync(`${BASE_DIR}/${project}`)
+            const files: string[] = fileSystem.readdirSync(`${path}/${project}`)
             return projectCard(project, files)
         })
         return projectCards
