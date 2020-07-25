@@ -1,7 +1,6 @@
 import express, { Request, Response, Router} from 'express'
 import { BASE_DIR } from './baseDir'
 import createProject from '../services/createProject'
-//import fs from 'fs'
 import path from 'path'
 
 const router: Router = express.Router()
