@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express'
 import createProject from './routes/createProjectRoute'
-import fetchProjects from './routes/fetchProjects'
+import fetchProjects from './routes/fetchProjectsRoute'
 import cors from 'cors'
 
 const app: Application = express()
