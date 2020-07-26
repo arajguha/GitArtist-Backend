@@ -15,7 +15,7 @@ class ProjectService {
             fileSystem.mkdir(path, error => {
                 if (error) {
                     console.log(`[*]error while creating directory: ${error}`);
-                    reject(new Error(error.message));
+                    reject(error);
                 }
                 else{                
                     console.log('[*]project directory created');
