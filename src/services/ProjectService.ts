@@ -1,6 +1,7 @@
 import ProjectCard from './types/IProjectCard'
 import { projectCard } from './projectCard'
-import fileSystem from 'fs'
+import fs from 'fs'
+
 
 class ProjectService {
     public createProject(path: string): Promise<void>{
@@ -12,7 +13,7 @@ class ProjectService {
         }
 
         return new Promise((resolve, reject) => {
-            fileSystem.mkdir(path, error => {
+            fs.mkdir(path, error => {
                 if (error) {
                     console.log(`[*]error while creating directory: ${error}`);
                     reject(error);
@@ -26,17 +27,17 @@ class ProjectService {
     }
 
     public fetchProjects(path: string): ProjectCard[] {
-        const projects = fileSystem.readdirSync(path)
+        const projects = fs.readdirSync(path)
     
         const projectCards: ProjectCard[] = projects.map((project: string) => {
-            const files: string[] = fileSystem.readdirSync(`${path}/${project}`)
+            const files: string[] = fs.readdirSync(`${path}/${project}`)
             return projectCard(project, files)
         })
         return projectCards
     }
 
     private projectExists(path: string): boolean {
-        return fileSystem.existsSync(path) ? true : false
+        return fs.existsSync(path) ? true : false
     }
 
 }
