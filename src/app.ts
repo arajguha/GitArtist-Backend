@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express'
 import createProject from './routes/createProjectRoute'
 import fetchProjects from './routes/fetchProjectsRoute'
 import cors from 'cors'
+import env from './config-loader'
 
 const app: Application = express()
 app.use(cors())
@@ -16,5 +17,5 @@ app.get('/test', (req, res) => {
 })
 
 
-const PORT: number =  3001
+const { PORT = 3001} = env
 app.listen(PORT, () => console.log(`server running on port ${PORT}...`))
