@@ -1,5 +1,5 @@
 import express, { Request, Response, Router} from 'express'
-import env from '../config-loader';
+import env from '../config-loader'
 import ProjectService  from '../services/ProjectService'
 import IProjectService  from '../services/types/IProjectService'
 import path from 'path'
@@ -7,7 +7,6 @@ import path from 'path'
 const { BASE_DIR = '' } = env
 
 interface CodedRuntimeException {
-    httpStatus: number,
     errorCode: string,
     errorReason: string
 }
