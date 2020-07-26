@@ -15,11 +15,12 @@ class ProjectService {
             fileSystem.mkdir(path, error => {
                 if (error) {
                     console.log(`[*]error while creating directory: ${error}`);
-                    return reject(error);
+                    reject(new Error(error.message));
                 }
-                
-                console.log('[*]project directory created');
-                return resolve();
+                else{                
+                    console.log('[*]project directory created');
+                    resolve();
+                }
             });
         })
     }
