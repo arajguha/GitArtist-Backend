@@ -8,7 +8,7 @@ Backend code for GitArtist project
   
   Method type: Post
  
-2. ### fetchProjects: 
+2. ### fetchProjectsRoute: 
   Get the list of projects from GitArtist root directory and returns an array of json objects as response. 
   
   Method type: Get
