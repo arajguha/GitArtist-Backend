@@ -25,7 +25,7 @@ class ProjectService {
         })
     }
 
-    fetchProjects(path: string): ProjectCard[] {
+    public fetchProjects(path: string): ProjectCard[] {
         const projects = fileSystem.readdirSync(path)
     
         const projectCards: ProjectCard[] = projects.map((project: string) => {
