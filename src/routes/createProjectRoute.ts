@@ -12,7 +12,7 @@ interface CodedRuntimeException {
 }
 
 function isCodedRuntimeException(err: any): err is CodedRuntimeException{
-    return 'errorCode' in err && 'errorReason' in err;
+    return 'errorCode' in err && 'errorReason' in err
 }
 
 const router: Router = express.Router()
@@ -26,14 +26,14 @@ router.post('/create-project/', (req: Request, res: Response) => {
     
     projectService
         .createProject(path.join(BASE_DIR, projectName))
-        .then(() => { res.sendStatus(201); })
+        .then(() => { res.sendStatus(201) })
         .catch(err => {
             if (isCodedRuntimeException(err)) {
-                res.statusCode = 422;
-                res.send(err);
+                res.statusCode = 422
+                res.send(err)
             }
             else {
-                res.statusCode = 500;
+                res.statusCode = 500
                 res.send({
                     errorCode: 'UNKNOWN_ERROR',
                     errorReason: err
