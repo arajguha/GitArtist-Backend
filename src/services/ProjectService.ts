@@ -1,9 +1,10 @@
 import ProjectCard from './types/IProjectCard'
 import { projectCard } from './projectCard'
+import simpleGit, { SimpleGit } from 'simple-git';
 import fs from 'fs'
 
-
 class ProjectService {
+
     public createProject(path: string): Promise<void>{
         if (this.projectExists(path)) {
             return Promise.reject({
@@ -34,6 +35,22 @@ class ProjectService {
             return projectCard(project, files)
         })
         return projectCards
+    }
+
+    public gitInitUtil(path: string): Promise<string> {
+        const git: SimpleGit = simpleGit(path, {binary: 'git'})
+
+        return new Promise((resolve, reject) => {
+            git.init()
+                .then(() => {
+                    console.log('git initialization success')
+                    resolve("git initialization success")
+                })
+                .catch(err => {
+                    console.log(err)
+                    reject(err)
+                })
+        })
     }
 
     private projectExists(path: string): boolean {
