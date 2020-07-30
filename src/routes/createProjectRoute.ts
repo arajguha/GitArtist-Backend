@@ -3,17 +3,9 @@ import env from '../config-loader'
 import ProjectService  from '../services/ProjectService'
 import IProjectService  from '../services/types/IProjectService'
 import path from 'path'
+import CodedRuntimeException, { isCodedRuntimeException } from './CodedRuntimeException'
 
 const { BASE_DIR = '' } = env
-
-interface CodedRuntimeException {
-    errorCode: string,
-    errorReason: string
-}
-
-function isCodedRuntimeException(err: any): err is CodedRuntimeException{
-    return 'errorCode' in err && 'errorReason' in err
-}
 
 const router: Router = express.Router()
 const projectService: IProjectService = new ProjectService()
@@ -34,12 +26,13 @@ router.post('/create-project/', (req: Request, res: Response) => {
             }
             else {
                 res.statusCode = 500
-                res.send({
+                const customError: CodedRuntimeException = {
                     errorCode: 'UNKNOWN_ERROR',
                     errorReason: err
-                });
+                }
+                res.send(customError);
             }
-        });
+        })
 })
 
 export default router

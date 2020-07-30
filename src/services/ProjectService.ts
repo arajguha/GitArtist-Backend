@@ -39,11 +39,13 @@ class ProjectService {
 
     public gitInitUtil(path: string): Promise<string> {
         if(!this.projectExists(path)){
+            console.log('Specified project does not exist')
             return Promise.reject({
-                errorCode: 'PROJECT_DOES_NOT_EXIST',
-                errorReason: 'Specified project name does not exist'
+                errorCode: 'PROJECT_PATH_DOES_NOT_EXIST',
+                errorReason: 'Specified project does not exist'
             })
         }
+        
         const git: SimpleGit = simpleGit(path, {binary: 'git'})
 
         return new Promise((resolve, reject) => {

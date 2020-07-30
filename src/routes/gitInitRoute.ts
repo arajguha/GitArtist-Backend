@@ -3,6 +3,7 @@ import ProjectService from '../services/ProjectService'
 import IProjectService from '../services/types/IProjectService'
 import path from 'path'
 import env from '../config-loader'
+import CodedRuntimeException, { isCodedRuntimeException } from './CodedRuntimeException'
 
 const { BASE_DIR = '' } = env
 const router: Router = express.Router()
@@ -14,10 +15,18 @@ router.post('/git-init/', (req: Request, res: Response) => {
 
     projectService.gitInitUtil(_path)
         .then(() => res.sendStatus(201))
-        .catch(err => res.send({
-            errorCode: 'UNKNOW_ERROR',
-            errorReason: err
-        }))
+        .catch(err => {
+            if(isCodedRuntimeException(err)){
+                res.statusCode = 422
+                res.send(err)
+            }else{
+                const customError: CodedRuntimeException = {
+                    errorCode: 'UKNOWN_ERROR',
+                    errorReason: err
+                }
+                res.send(customError)
+            }
+        })
 })
 
 export default router
