@@ -12,4 +12,9 @@ Backend code for GitArtist project
   Get the list of projects from GitArtist root directory and returns an array of json objects as response. 
   
   Method type: Get
+
+3. ### gitInitRoute:
+   Initialize an exisiting project as git repo.
+   
+   Method type: POST
   
