@@ -11,9 +11,9 @@ const projectService: IProjectService = new ProjectService()
 router.post('/git-init/', (req: Request, res: Response) => {
     const _path = path.join(BASE_DIR, req.body.name)
     console.log(_path)
-    
+
     projectService.gitInitUtil(_path)
-        .then(response => res.send(response))
+        .then(() => res.sendStatus(201))
         .catch(err => res.send({
             errorCode: 'UNKNOW_ERROR',
             errorReason: err
