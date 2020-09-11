@@ -8,7 +8,7 @@ import env from './config-loader'
 const app: Application = express()
 app.use(cors())
 app.use(express.json())
-//app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 
 app.use('/gitArtist', createProject)
 app.use('/gitArtist', fetchProjects)

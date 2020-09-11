@@ -10,6 +10,7 @@ const projectService: IProjectService = new ProjectService()
 
 router.get('/fetch-projects', (req: Request , res: Response) => {
     const projectCards: ProjectCard[] = projectService.fetchProjects(BASE_DIR)
+    console.log('[* fetchProjectRoute]', projectCards)
     res.send(projectCards)
 })
 

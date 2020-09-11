@@ -11,6 +11,7 @@ const router: Router = express.Router()
 const projectService: IProjectService = new ProjectService()
 
 router.post('/create-project/', (req: Request, res: Response) => {
+    console.log('[*createProjectRoute] request body:', req.body)
     const projectName: string = req.body.name
 
     console.log('[*]project name: ', projectName)
