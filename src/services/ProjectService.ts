@@ -28,6 +28,7 @@ class ProjectService {
     }
 
     public fetchProjects(path: string): ProjectCard[] {
+        //path is BASE_DIR
         const projects = fs.readdirSync(path)
     
         const projectCards: ProjectCard[] = projects.map((project: string) => {
@@ -59,6 +60,25 @@ class ProjectService {
                     reject(err)
                 })
         })
+    }
+
+    /*
+    * @params: path is BASE_DIR + project_dir
+    * @params: name is project name
+    * returns ProjectCard else null if project not found in BASE_DIR
+    */
+    public projectSummary(path: string, name: string): ProjectCard | null {
+
+        if(this.projectExists(path)) {
+            try{
+                const files = fs.readdirSync(`${path}/${name}`)
+                return projectCard(name, files)
+            }catch(err) {
+                console.log(err)
+            }
+        }
+
+        return null
     }
 
     private projectExists(path: string): boolean {
