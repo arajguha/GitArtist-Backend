@@ -17,4 +17,9 @@ Backend code for GitArtist project
    Initialize an exisiting project as git repo.
    
    Method type: POST
+   
+4. ### projectSummaryRoute:
+   Returns a ProjectCard object with project details
+   
+   Method type: GET
   
